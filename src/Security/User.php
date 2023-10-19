@@ -16,6 +16,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    private $plainPassword;
+
     public function getEmail(): ?string
     {
         return $this->email;
@@ -72,12 +74,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
     /**
      * @see UserInterface
      */
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 }
