@@ -39,6 +39,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\EqualTo(propertyPath: "password", message: "Les deux mots de passe doivent être identiques")]
     private $passwordConfirm;
 
+    #[ORM\Column(type: "json")]
     private $roles = [];
 
     private $plainPassword;
